@@ -1,12 +1,12 @@
 const electron = require('electron');
-const {app} = electron;
-const {BrowserWindow} = electron;
+const {app, BrowserWindow, ipcMain} = electron;
+const mail = require('./mail');
 
 let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL('http://sbmail.futurewoods.net:5000');
+  mainWindow.loadURL('http://sbmail.futurewoods.net:5000/send');
 
   // ウィンドウが閉じたら終了
   mainWindow.on('closed', function() {
@@ -29,3 +29,8 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+ipcMain.on('send-mail', (event, arg) => { //asynchronous
+    mail.send(arg);
+    event.sender.send('send-mail-result');
+})
