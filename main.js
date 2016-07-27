@@ -30,7 +30,7 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('send-mail', (event, arg) => { //asynchronous
-    mail.send(arg);
-    event.sender.send('send-mail-result');
-})
+ipcMain.on('send-mail', (event, arg) => { // asynchronous
+  mail.send(arg);
+  event.sender.send('send-mail-result');
+});
