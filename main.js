@@ -6,7 +6,7 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL('http://sbmail.futurewoods.net:5000/send');
+  mainWindow.loadURL('http://sbmail.futurewoods.net:5000/');
 
   // ウィンドウが閉じたら終了
   mainWindow.on('closed', function() {
