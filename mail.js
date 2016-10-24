@@ -23,8 +23,12 @@ send(mailOptions);
 */
 
 // send mail with defined transport object
-function send(mailOptions, callback) {
-  transporter.sendMail(mailOptions, callback);
+function send(mailOptions, mailtos, callback) {
+  for (let mailto of mailtos){
+    mailOptions["to"] = mailto;
+    transporter.sendMail(mailOptions, callback);
+  }
+
     /*
     function callback (error, info){
         if(error){

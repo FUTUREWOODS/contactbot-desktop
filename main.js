@@ -6,7 +6,8 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL('http://sbmail.futurewoods.net:5000/');
+  //mainWindow.loadURL('http://sbmail.futurewoods.net:5000/');
+  mainWindow.loadURL('http://localhost:5000/');
 
   // ウィンドウが閉じたら終了
   mainWindow.on('closed', function() {
@@ -30,7 +31,7 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('send-mail', (event, arg) => { // asynchronous
-  mail.send(arg);
+ipcMain.on('send-mail', (event, mailOptions, mailtos) => { // asynchronous
+  mail.send(mailOptions, mailtos);
   event.sender.send('send-mail-result');
 });
