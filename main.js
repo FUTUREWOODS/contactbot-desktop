@@ -6,8 +6,8 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  //mainWindow.loadURL('http://sbmail.futurewoods.net:5000/');
-  mainWindow.loadURL('http://localhost:5000/');
+  mainWindow.loadURL('http://sbmail.futurewoods.net:5000/');
+  //mainWindow.loadURL('http://localhost:5000/');
 
   // ウィンドウが閉じたら終了
   mainWindow.on('closed', function() {
